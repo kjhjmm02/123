@@ -18,7 +18,9 @@ public:
 	CStaffList();
 	~CStaffList();
 	void AddStaff(CStaff* val);
-	void Remove();
+	void RemoveByID(int ID);
+	void ModifyByID(int ID);
+	void ModifiedInfo(CStaff * pInfoStaff);
 	void SearchByName(string name);
 	void ShowList();
 };
