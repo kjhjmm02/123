@@ -13,12 +13,12 @@ CHourslyStaff::~CHourslyStaff()
 	//
 }
 
-float CHourslyStaff::calcSalary() 
+double CHourslyStaff::calcSalary() 
 { 
 	return calcHourslyRate() * BASIC_SALARY * qualityRate;
 };
 
-float CHourslyStaff::calcHourslyRate() 
+double CHourslyStaff::calcHourslyRate()
 { 
 	return getNumberOfHours() / TIME_TOTAL;
 }

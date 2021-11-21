@@ -20,7 +20,7 @@ public:
 	void AddStaff(CStaff* val);
 	void RemoveByID(int ID);
 	void ModifyByID(int ID);
-	CStaff * ModifiedInfo();
+	CStaff * InfoStaff();
 	void SearchByName(string name);
 	void ShowList();
 };

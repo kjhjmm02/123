@@ -12,7 +12,7 @@ CPartTimeStaff::~CPartTimeStaff()
 	//
 }
 
-float CPartTimeStaff::calcSalary()
+double CPartTimeStaff::calcSalary()
 { 
 	return TIME_RATE_PART_TIME * BASIC_SALARY * qualityRate; 
 }

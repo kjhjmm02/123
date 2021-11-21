@@ -75,7 +75,7 @@ void CStaffList::ModifyByID(int ID)
 	{
 		if (head->data->getID() == ID)
 		{
-			CStaff *temp = ModifiedInfo();
+			CStaff *temp = InfoStaff();
 			if (temp != NULL)
 			{
 				delete head->data;
@@ -86,7 +86,7 @@ void CStaffList::ModifyByID(int ID)
 	}
 }
 
-CStaff* CStaffList::ModifiedInfo()
+CStaff* CStaffList::InfoStaff()
 {
 	string typeStaff;
 	int id;
@@ -111,17 +111,20 @@ CStaff* CStaffList::ModifiedInfo()
 	if (typeStaff.compare("Full Time") == 0)
 	{
 		CFulltimeStaff *pFullTime = new CFulltimeStaff(id, name, age, telephoneNumber, qualityRate);
+		pFullTime->setSalary(pFullTime->calcSalary());
 		return pFullTime;
 	}
 	else if(typeStaff.compare("Part Time") == 0)
 	{
 		CPartTimeStaff *pPartTime = new CPartTimeStaff(id, name, age, telephoneNumber, qualityRate);
+		pPartTime->setSalary(pPartTime->calcSalary());
 		return pPartTime;
 	}
 	else if (typeStaff.compare("Hoursly") == 0)
 	{
 		cout << "Hours:	"; cin >> numOfHours;
 		CHourslyStaff *pHours = new CHourslyStaff(id, name, age, telephoneNumber, qualityRate, numOfHours);
+		pHours->setSalary(pHours->calcSalary());
 		return pHours;
 	}
 	else
@@ -134,6 +137,7 @@ CStaff* CStaffList::ModifiedInfo()
 void CStaffList::SearchByName(string name)
 {
 	Node* head = pHead;
+	int k = 0;
 	while (head != NULL)
 	{
 		Node* temp = head;
@@ -141,8 +145,10 @@ void CStaffList::SearchByName(string name)
 		if (name.compare(temp->data->getName()) == 0)
 		{
 			temp->data->Show();
+			k++;
 		}
 	}
+	cout << "Found" << k << "staffs" << endl;
 }
 
 void CStaffList::ShowList()

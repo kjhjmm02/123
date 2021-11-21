@@ -7,7 +7,7 @@ CFulltimeStaff::CFulltimeStaff(int nId, string strName, unsigned int nAge,
 	this->typeStaff = "Full Time";
 }
 
-float CFulltimeStaff::calcSalary()
+double CFulltimeStaff::calcSalary()
 {
 	return BASIC_SALARY * qualityRate + calcBonus();
 }
@@ -23,4 +23,5 @@ float CFulltimeStaff::calcBonus()
 	else if (qualityRate >= 7) {
 		return LOW_RATE_BONUS;
 	}
+	return 0;
 }

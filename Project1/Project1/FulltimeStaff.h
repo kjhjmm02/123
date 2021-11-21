@@ -12,5 +12,5 @@ private:
 	float calcBonus();
 public:
 	CFulltimeStaff(int nId, string strName, unsigned int nAge, string strTelephoneNumber, float fQualityRate);
-	float calcSalary();
+	double calcSalary();
 };

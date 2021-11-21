@@ -13,7 +13,7 @@ private:
 	//
 protected:
 	string typeStaff;
-	float salary;
+	double salary;
 	int id;
 	string name;
 	unsigned int age;
@@ -34,8 +34,8 @@ public:
 	virtual void setAge(int nAge) { age = nAge; };
 	virtual int getAge() { return age; };
 
-	virtual void setSalary(float fSalary) { salary = fSalary; };
-	virtual float getSalary() { return salary; };
+	virtual void setSalary(double fSalary) { salary = fSalary; };
+	virtual double getSalary() { return salary; };
 
 	virtual void setTypeStaff(string strType) { typeStaff = strType; };
 	virtual string getTypeStaff() { return typeStaff; };

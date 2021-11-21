@@ -10,5 +10,5 @@ private:
 public:
 	CPartTimeStaff(int nId, string strName, unsigned int nAge, string strTelephoneNumber, float fQualityRate);
 	~CPartTimeStaff();
-	float calcSalary();
+	double calcSalary();
 };

@@ -7,11 +7,11 @@ class CHourslyStaff : public CStaff
 {
 private:
 	float numOfHours;
-	float calcHourslyRate();
+	double calcHourslyRate();
 public:
 	CHourslyStaff(int nId, string strName, unsigned int nAge, string strTelephoneNumber, float fQualityRate, float fHours);
 	~CHourslyStaff();
-	float calcSalary();
+	double calcSalary();
 	float getNumberOfHours() { return numOfHours; };
 	void Show();
 };

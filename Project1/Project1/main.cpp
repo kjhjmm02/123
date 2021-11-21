@@ -3,26 +3,61 @@
 #include "PartTimeStaff.h";
 #include "StaffList.h";
 
+int MenuShow()
+{
+	int sel;
+	cout << "1. Add new staff" << endl;
+	cout << "2. Edit information of staff by id" << endl;
+	cout << "3. Delete staff by id" << endl;
+	cout << "4. Find staff by name" << endl;
+	cout << "5. Show all information" << endl;
+	cout << "6. Open the file" << endl;
+	cout << "7. Save to file" << endl;
+	cin >> sel;
+	return sel;
+}
+
+bool Processing(CStaffList* List)
+{
+	string name;
+	int id;
+	switch (MenuShow())
+	{
+	case 1:
+		List->AddStaff(List->InfoStaff());
+		break;
+	case 2:
+		cout << "Enter ID";
+		cin >> id;
+		List->ModifyByID(id);
+		break;
+	case 3:
+		cout << "Enter ID";
+		cin >> id;
+		List->RemoveByID(id);
+		break;
+	case 4:
+		cout << "Enter Name";
+		cin.ignore();
+		std::getline(std::cin, name);
+		List->SearchByName(name);
+		break;
+	case 5:
+		List->ShowList();
+		break;
+	case 0:
+		return false;
+	}
+	return true;
+}
+
 int main()
 {
-	CHourslyStaff *A2 = new CHourslyStaff(10, "B", 17, "01289999", 3, 10);
-	CFulltimeStaff *A3= new CFulltimeStaff(11, "ABC", 17, "01289999", 3);
-	CPartTimeStaff *A4= new CPartTimeStaff(12, "A", 17, "01289999", 3);
-
-	CStaff *P = A2;
-	CStaffList L;
-	L.AddStaff(P);
-	P = A3;
-	L.AddStaff(P);
-	P = A4;
-	L.AddStaff(P);
-	L.ShowList();
-	cout << "==================" << endl;
-	L.SearchByName("A");
-	cout << "==================" << endl;
-	//L.RemoveByID(12);
-	L.ModifyByID(11);
-	L.ShowList();
+	CStaffList List;
+	while (Processing(&List))
+	{
+	}
+	
 	system("PAUSE");
 	return 0;
 }
