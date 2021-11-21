@@ -17,6 +17,7 @@ CStaffList::~CStaffList()
 	{
 		Node* temp = head;
 		head = head->pNext;
+		delete temp->data;
 		delete temp;
 		temp = NULL;
 	}
@@ -46,6 +47,7 @@ void CStaffList::RemoveByID(int ID)
 	if (head->data->getID() == ID)
 	{
 		pHead = head->pNext;
+		delete temp->data;
 		delete temp;
 		temp = NULL;
 		return;
@@ -58,6 +60,7 @@ void CStaffList::RemoveByID(int ID)
 		{
 			head->pNext = head->pNext->pNext;
 			delete temp;
+			delete temp->data;
 			temp = NULL;
 			return;
 		}
@@ -73,13 +76,14 @@ void CStaffList::ModifyByID(int ID)
 		if (head->data->getID() == ID)
 		{
 			Node* temp = head;
-			ModifiedInfo(temp->data);
+			//delete temp->data;
+			temp->data = ModifiedInfo();
 		}
 		head = head->pNext;
 	}
 }
 
-void CStaffList::ModifiedInfo(CStaff* pInfoStaff)
+CStaff* CStaffList::ModifiedInfo()
 {
 	string typeStaff;
 	int id;
@@ -103,26 +107,25 @@ void CStaffList::ModifiedInfo(CStaff* pInfoStaff)
 	
 	if (typeStaff.compare("Full Time") == 0)
 	{
-		CFulltimeStaff objFullTime(id, name, age, telephoneNumber, qualityRate);
-		pInfoStaff = &objFullTime;
+		CFulltimeStaff *pFullTime = new CFulltimeStaff(id, name, age, telephoneNumber, qualityRate);
+		return pFullTime;
 	}
 	else if(typeStaff.compare("Part Time") == 0)
 	{
-		CPartTimeStaff objPartTime(id, name, age, telephoneNumber, qualityRate);
-		pInfoStaff = &objPartTime;
+		CPartTimeStaff *pPartTime = new CPartTimeStaff(id, name, age, telephoneNumber, qualityRate);
+		return pPartTime;
 	}
 	else if (typeStaff.compare("Hoursly") == 0)
 	{
 		cout << "Hours:	"; cin >> numOfHours;
-		cout << "Phone Number:	";
-		CHourslyStaff objHours(id, name, age, telephoneNumber, qualityRate, numOfHours);
-		pInfoStaff = &objHours;
+		CHourslyStaff *pHours = new CHourslyStaff(id, name, age, telephoneNumber, qualityRate, numOfHours);
+		return pHours;
 	}
 	else
 	{
 		cout << "Invalid kind of staff" << endl;
 	}
-
+	return NULL;
 }
 
 void CStaffList::SearchByName(string name)
