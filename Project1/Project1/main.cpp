@@ -5,16 +5,16 @@
 
 int main()
 {
-	CHourslyStaff A2(10, "B", 17, "01289999", 3, 10);
-	CFulltimeStaff A3(11, "ABC", 17, "01289999", 3);
-	CPartTimeStaff A4(12, "A", 17, "01289999", 3);
+	CHourslyStaff *A2 = new CHourslyStaff(10, "B", 17, "01289999", 3, 10);
+	CFulltimeStaff *A3= new CFulltimeStaff(11, "ABC", 17, "01289999", 3);
+	CPartTimeStaff *A4= new CPartTimeStaff(12, "A", 17, "01289999", 3);
 
-	CStaff *P = &A2;
+	CStaff *P = A2;
 	CStaffList L;
 	L.AddStaff(P);
-	P = &A3;
+	P = A3;
 	L.AddStaff(P);
-	P = &A4;
+	P = A4;
 	L.AddStaff(P);
 	L.ShowList();
 	cout << "==================" << endl;

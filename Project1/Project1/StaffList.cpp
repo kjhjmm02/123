@@ -75,9 +75,12 @@ void CStaffList::ModifyByID(int ID)
 	{
 		if (head->data->getID() == ID)
 		{
-			Node* temp = head;
-			//delete temp->data;
-			temp->data = ModifiedInfo();
+			CStaff *temp = ModifiedInfo();
+			if (temp != NULL)
+			{
+				delete head->data;
+				head->data = temp;
+			}
 		}
 		head = head->pNext;
 	}
