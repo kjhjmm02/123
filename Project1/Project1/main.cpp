@@ -2,6 +2,31 @@
 #include "HourslyStaff.h";
 #include "PartTimeStaff.h";
 #include "StaffList.h";
+#include <fstream>
+#include <vector>
+
+void CreateListFromFile()
+{
+	//vector<string> lines;
+	string line;
+	try
+	{
+
+		ifstream ifs("input.txt");
+		if (!ifs) {
+			throw "Error: file not opened.";
+		}
+		while (getline(ifs, line)) {
+			//lines.push_back(line);
+			for(int i = 0)
+		}
+
+	}
+	catch (const char* msg) {
+		cerr << msg << endl;
+	}
+}
+
 
 int MenuShow()
 {
